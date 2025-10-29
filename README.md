@@ -18,8 +18,6 @@ You can watch the project in action here:
 
 [▶️ Watch on YouTube](https://www.youtube.com/shorts/XXuOxKw7Nt0)
 
-Or view it directly below:
-
 <p align="center">
   <a href="https://www.youtube.com/shorts/XXuOxKw7Nt0" target="_blank">
     <img src="https://img.youtube.com/vi/XXuOxKw7Nt0/0.jpg" alt="BCD Display Demo" width="480">
@@ -57,8 +55,32 @@ Or view it directly below:
 | `TB.vhd` | Testbench (simulation 0–F) |
 | `bcd_display.xdc` | Pin constraints (Basys 3) |
 | `.gitignore` | Ignore Vivado temp/build files |
+| `waveform.wcfg` | Vivado waveform configuration |
 | `README.md` | Project documentation |
 
 ---
 
 ## 🧱 System Architecture
+
+
+
+---
+
+## 🧮 Simulation Visualization
+During simulation in **Vivado**, waveform signals were configured using an XML `.wcfg` file.  
+This file defines which signals (`SW_tb`, `SEG_tb`, `AN_tb`) appear in the waveform viewer.
+
+Example snippet from the waveform configuration:
+```xml
+<wave_config>
+  <db_ref_list>
+    <db_ref path="TB_behav.wdb" id="1">
+      <top_modules>
+        <top_module name="TB" />
+      </top_modules>
+    </db_ref>
+  </db_ref_list>
+  <wvobject fp_name="/TB/SW_tb" type="array" />
+  <wvobject fp_name="/TB/SEG_tb" type="array" />
+  <wvobject fp_name="/TB/AN_tb" type="array" />
+</wave_config>
