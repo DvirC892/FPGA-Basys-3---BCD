@@ -55,32 +55,66 @@ You can watch the project in action here:
 | `TB.vhd` | Testbench (simulation 0–F) |
 | `bcd_display.xdc` | Pin constraints (Basys 3) |
 | `.gitignore` | Ignore Vivado temp/build files |
-| `waveform.wcfg` | Vivado waveform configuration |
 | `README.md` | Project documentation |
 
 ---
 
 ## 🧱 System Architecture
-
-
+<p align="center">
+  <img src="https://github.com/DvirC892/projectPhotos/blob/main/%D7%A6%D7%99%D7%9C%D7%95%D7%9D%20%D7%9E%D7%A1%D7%9A%202025-10-29%20200752.png" 
+       alt="BCD Display Architecture" width="750">
+</p>
 
 ---
 
-## 🧮 Simulation Visualization
-During simulation in **Vivado**, waveform signals were configured using an XML `.wcfg` file.  
-This file defines which signals (`SW_tb`, `SEG_tb`, `AN_tb`) appear in the waveform viewer.
+## 📊 Simulation (Vivado Waveform)
+<p align="center">
+  <img src="https://github.com/DvirC892/projectPhotos/blob/main/%D7%A6%D7%99%D7%9C%D7%95%D7%9D%20%D7%9E%D7%A1%D7%9A%202025-10-29%20200946.png" 
+       alt="Vivado Simulation Waveform" width="750">
+</p>
 
-Example snippet from the waveform configuration:
-```xml
-<wave_config>
-  <db_ref_list>
-    <db_ref path="TB_behav.wdb" id="1">
-      <top_modules>
-        <top_module name="TB" />
-      </top_modules>
-    </db_ref>
-  </db_ref_list>
-  <wvobject fp_name="/TB/SW_tb" type="array" />
-  <wvobject fp_name="/TB/SEG_tb" type="array" />
-  <wvobject fp_name="/TB/AN_tb" type="array" />
-</wave_config>
+The simulation demonstrates:
+- Input transitions from `0000` to `1111` via `SW_tb`
+- Corresponding segment output changes (`SEG_tb`)
+- Active display indication through `AN_tb`
+
+---
+
+## ▶️ How to Run
+1. Open Vivado → Create New Project → Add Sources  
+2. Add: `bcd_display.vhd`, `bcd_display.xdc`, and optionally `TB.vhd`  
+3. Set target device: **Basys 3 (xc7a35t-1cpg236c)**  
+4. Run **Synthesis → Implementation → Generate Bitstream**  
+5. Program FPGA and observe:
+   - LEDs light up with switches  
+   - Display shows correct hex value  
+   - Press **BTNC** to cycle between 7-segment displays
+
+---
+
+## 📸 Example Outputs
+| Switches | Display | LEDs |
+|-----------|----------|------|
+| `0000` | 0 | Off |
+| `0001` | 1 | LED0 |
+| `1010` | A | LED1 + LED3 |
+| `1111` | F | All LEDs ON |
+
+---
+
+## 🧰 Tools Used
+- **Vivado Design Suite 2023.1**
+- **VHDL-2008**
+- **Basys 3 FPGA**
+
+---
+
+## 🧾 License
+This project is open-source and free for educational use.  
+If you reuse or modify it, please credit **Dvir Cohen**.
+
+---
+
+## 💬 Contact
+📧 [LinkedIn – Dvir Cohen](https://www.linkedin.com/in/dvir-cohen892)  
+📁 GitHub: [DvirC892](https://github.com/DvirC892)
