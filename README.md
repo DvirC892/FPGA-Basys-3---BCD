@@ -42,8 +42,6 @@ You can watch the project in action here:
 | Switches | `SW[3:0]` | Binary input (0–15) |
 | LEDs | `LED[3:0]` | Reflect switch state |
 | Seven Segment Display | `SEG[6:0]`, `AN[3:0]` | Active-Low display control |
-| Button | `BTNC` (`U18`) | Cycles between active displays |
-| Clock | `W5` | 100 MHz onboard clock |
 
 ---
 
@@ -54,7 +52,6 @@ You can watch the project in action here:
 | `bcd_display.vhd` | Main design source |
 | `TB.vhd` | Testbench (simulation 0–F) |
 | `bcd_display.xdc` | Pin constraints (Basys 3) |
-| `.gitignore` | Ignore Vivado temp/build files |
 | `README.md` | Project documentation |
 
 ---
